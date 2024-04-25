@@ -7,7 +7,7 @@
 
 Free to deploy your own cross-platform message application.
 
-[![Deploy with Vercel](https://vercel.com/button)](https://*.com)
+[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https%3A%2F%2Fgithub.com%2Fbetgo%2FNext-push&env=DATABASE_URL&env=CODE&project-name=next-push&repository-name=next-push)
 
 </div>
 
@@ -27,7 +27,7 @@ Free to deploy your own cross-platform message application.
 3. 创建Blob,获取`BLOB_READ_WRITE_TOKEN` ![blob](static/blob.png)
 4. 创建Postgres,获取`POSTGRES_URL`![postgres](static/postgres.png)
 5. 点击右侧按钮开始部署：
-   [![Deploy with Vercel](https://vercel.com/button)](https://)，直接使用 Github 账号登陆即可，记得在环境变量页填入 `BLOB_READ_WRITE_TOKEN`,`POSTGRES_URL`；
+  [![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https%3A%2F%2Fgithub.com%2Fbetgo%2FNext-push&env=DATABASE_URL&env=CODE&project-name=next-push&repository-name=next-push)，直接使用 Github 账号登陆即可，记得在环境变量页填入 `BLOB_READ_WRITE_TOKEN`,`POSTGRES_URL`；
 6. 部署完毕后，即可开始使用；
 7. （可选）[绑定自定义域名](https://vercel.com/docs/concepts/projects/domains/add-a-domain)：Vercel 分配的域名 DNS 在某些区域被污染了，绑定自定义域名即可直连。
 
