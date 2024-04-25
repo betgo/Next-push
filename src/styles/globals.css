@@ -1,0 +1,100 @@
+@import './animation.css';
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+html,
+body {
+  padding: 0;
+  margin: 0;
+}
+
+/* 
+  中文 font-cursive
+  英文 font-serif
+  数字 font-mono
+*/
+
+/* background: 背景色 */
+/* primary: 主色 */
+/* secondary: 次色 */
+/* accent 重点突出的颜色 */
+/* muted 柔和的颜色 */
+/* destructive 破坏性的 */
+
+/* foreground: 文字颜色 以上颜色后面加上 forgeround 就是文本色 */
+
+@layer base {
+
+
+  .overflow-archor-none {
+    overflow-anchor: none;
+  }
+}
+
+@layer components {
+  .g-border {
+    @apply border border-solid border-gray-300;
+  }
+
+  .icon {
+    @apply flex items-center justify-center;
+  }
+
+  .tody::after {
+    content: "";
+    display: block;
+    height: 1px;
+    left: 0;
+    opacity: 0.3;
+    position: absolute;
+    top: 0.7rem;
+    width: 100%;
+    @apply bg-foreground;
+  }
+
+
+}
+
+#scroller * {
+  overflow-anchor: none;
+}
+
+#anchor {
+  overflow-anchor: auto;
+}
+
+/* 滚动条样式 */
+::-webkit-scrollbar {
+  width: 4px;
+}
+
+::-webkit-scrollbar-track {
+  /* background: #f1f1f1; */
+}
+
+::-webkit-scrollbar-thumb {
+  background: #888;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #555;
+}
+
+.g-icon {
+  @apply h-6 w-6;
+}
+
+.dark .g-icon {
+  @apply h-6 w-6;
+
+  circle {
+    fill: transparent;
+    stroke: #edebe9;
+  }
+
+  path {
+    fill: #fff;
+  }
+}

@@ -1,0 +1,5 @@
+-- AlterTable
+ALTER TABLE "Message" ADD COLUMN     "fileName" TEXT,
+ADD COLUMN     "fileSize" TEXT,
+ADD COLUMN     "isDel" INTEGER NOT NULL DEFAULT 0,
+ADD COLUMN     "ua" INTEGER NOT NULL DEFAULT 0;

@@ -1,0 +1,5 @@
+<svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" class="c_msg_header_icon">
+      <circle cx="12" cy="12" r="11.5" fill="#fff" stroke="#44a856"></circle>
+      <path d="M6 8a2 2 0 012-2h8a2 2 0 012 2v6a2 2 0 01-2 2h-2v.5a.5.5 0 00.5.5h.5a.5.5 0 010 1H9a.5.5 0 010-1h.5a.5.5 0 00.5-.5V16H8a2 2 0 01-2-2V8zm1 6a1 1 0 001 1h8a1 1 0 001-1H7zm10-1V8a1 1 0 00-1-1H8a1 1 0 00-1 1v5h10zm-4 3.5V16h-2v.5c0 .175-.03.344-.085.5h2.175a1.5 1.5 0 01-.09-.5z"
+            fill="#44A856"></path>
+</svg>

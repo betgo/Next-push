@@ -1,0 +1,28 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+    provider = "prisma-client-js"
+}
+
+datasource db {
+    provider = "postgresql"
+    // NOTE: When using mysql or sqlserver, uncomment the @db.Text annotations in model Account below
+    // Further reading:
+    // https://www.prisma.io/docs/reference/api-reference/prisma-schema-reference#string
+    url      = env("DATABASE_URL") // uses connection pooling
+    // directUrl = env("POSTGRES_URL_NON_POOLING") // uses a direct connection
+}
+
+model Message {
+    id        String   @id @default(cuid())
+    type      String   @default("TEXT")
+    message   String?
+    url       String?
+    fileName  String?
+    fileSize  String?
+    isDel     Int      @default(0)
+    ua        Int      @default(0) // 0 电脑 1 手机
+    createdAt DateTime @default(now())
+    updatedAt DateTime @updatedAt
+}
