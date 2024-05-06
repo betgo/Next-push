@@ -14,11 +14,18 @@ import NetworkDetector from "../_components/network";
 import { useConfigStore } from "~/store/configStore";
 import clsx from "clsx";
 import ScrollAnchoringComponent from "../_components/ScrollAnchoringComponent";
+import { useSearchParams } from "next/navigation";
 
 const Page = () => {
-  // TODO 优化首页逻辑
-  const messageStore = useMessageStore();
+  const query = useSearchParams();
   const configStore = useConfigStore.getState();
+  const password = query.get("code");
+
+  useEffect(() => {
+    if (password) {
+      configStore.setConfig({ password });
+    }
+  }, [configStore, password]);
 
   const messages = trpc.message.infiniteMessages.useInfiniteQuery(
     {},
