@@ -4,6 +4,20 @@ export enum MESSAGETYPE {
   FILE = "FILE",
 }
 
+export enum SHORTKEY {
+  ENTER = "ENTER",
+  CTRL_ENTER = "CTRL_ENTER",
+}
+
+// shortkeys
+export const ShortKeys = [
+  { key: SHORTKEY.ENTER, label: "Enter" },
+  {
+    key: SHORTKEY.CTRL_ENTER,
+    label: "Ctrl+Enter",
+  },
+];
+
 /** response code */
 export const UNAUTHORIZED = "UNAUTHORIZED";
 

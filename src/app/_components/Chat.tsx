@@ -32,7 +32,7 @@ import {
   Replace_InfiniteData_Id,
   createMessage,
 } from "~/shared/message";
-import { MESSAGETYPE } from "~/shared/constant";
+import { MESSAGETYPE, SHORTKEY } from "~/shared/constant";
 import clsx from "clsx";
 import { type Message } from "@prisma/client";
 
@@ -185,6 +185,24 @@ const Chat = () => {
     }
     setRefrechLoaing(false);
   };
+  // 发送快捷键
+  const onKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
+    if (e.ctrlKey || e.shiftKey || e.altKey || e.metaKey) {
+      if (configStore.config.sendShortKey === SHORTKEY.CTRL_ENTER) {
+        if (e.key === "Enter" && e.ctrlKey) {
+          e.preventDefault();
+          void handleSubmit();
+        }
+      }
+      return;
+    }
+    if (configStore.config.sendShortKey === SHORTKEY.ENTER) {
+      if (e.key === "Enter") {
+        e.preventDefault();
+        void handleSubmit();
+      }
+    }
+  };
 
   return (
     <div className="mt-2 flex   flex-col border-t pb-4 pl-2 pr-2 pt-2 ">
@@ -255,12 +273,7 @@ const Chat = () => {
         fullWidth
         variant={"bordered"}
         radius="sm"
-        onKeyDown={(e) => {
-          if (e.key === "Enter" && !e.shiftKey) {
-            e.preventDefault();
-            void handleSubmit();
-          }
-        }}
+        onKeyDown={onKeyDown}
         endContent={
           <div className="cursor-pointer p-1" onClick={handleSubmit}>
             <AiOutlineSend className="text-xl" />

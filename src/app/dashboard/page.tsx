@@ -37,7 +37,7 @@ const Page = () => {
         if (query.state.error) return false;
         if (!configStore.isAuth) return false;
         // 否则，可以设置一个固定的重新获取间隔，例如 5000 毫秒
-        return 10000;
+        return process.env.NODE_ENV === "development" ? 1000 * 60 * 5 : 10000;
       },
       // staleTime: 5 * 1000,
       retry: 0,
