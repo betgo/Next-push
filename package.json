@@ -20,6 +20,7 @@
   "dependencies": {
     "@emotion/react": "^11.11.1",
     "@emotion/styled": "^11.11.0",
+    "@formatjs/intl-localematcher": "^0.5.4",
     "@nextui-org/react": "^2.2.9",
     "@prisma/client": "^5.8.1",
     "@serwist/next": "^8.4.4",
@@ -32,6 +33,7 @@
     "@trpc/next": "11.0.0-next-beta.303",
     "@trpc/react-query": "11.0.0-next-beta.303",
     "@trpc/server": "11.0.0-next-beta.303",
+    "@types/negotiator": "^0.6.3",
     "@vercel/analytics": "^1.2.2",
     "@vercel/blob": "^0.16.0",
     "@vercel/kv": "^1.0.0",
@@ -41,6 +43,7 @@
     "dayjs": "^1.11.10",
     "framer-motion": "^10.16.5",
     "immer": "^10.0.3",
+    "negotiator": "^0.6.3",
     "next": "^14.1.4",
     "next-themes": "^0.2.1",
     "react": "18.2.0",

@@ -12,23 +12,6 @@ import { IsMobile } from "~/shared/utils";
 import { sleep } from "~/shared/Utils/time";
 
 export const messageRouter = createTRPCRouter({
-  // getMessages: publicProcedure
-  //   .input(
-  //     z.object({
-  //       pageSize: z.number().default(20),
-  //       pageNumber: z.number().default(0),
-  //     }),
-  //   )
-  //   .query(async ({ ctx, input }) => {
-  //     const data = await ctx.db.message.findMany({
-  //       orderBy: {
-  //         createdAt: "desc",
-  //       },
-  //       skip: input.pageNumber * input.pageSize,
-  //       take: input.pageSize,
-  //     });
-  //     return data;
-  //   }),
   infiniteMessages: protectedProcedure
     .input(
       z.object({

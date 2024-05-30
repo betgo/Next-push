@@ -12,7 +12,7 @@ import toast from "react-hot-toast";
 import React from "react";
 import dayjs from "dayjs";
 import "dayjs/locale/zh-cn";
-import { copyImage, copyText, formatFileSize } from "../shared";
+import { copyImage, copyText, formatFileSize } from "../../shared";
 import ZoomImage from "./zoomImage";
 import ChatBtn from "./ChatBtn";
 
@@ -20,6 +20,8 @@ import { produce } from "immer";
 import { trpc } from "~/trpc/react";
 import { type EnhancedMessage } from "~/shared/type";
 import TextEnhance from "./textEnhance";
+import { useParams } from "next/navigation";
+import { Locale } from "~/dictionaries";
 
 dayjs.locale("zh-cn");
 
@@ -32,6 +34,10 @@ const Message = ({
   onDelete?: (id: string) => void;
   isLocal: boolean; // 是否是本地消息
 }) => {
+  // const { lang } = useParams<{ lang: Locale }>();
+  // console.log("lang", lang);
+  console.log(111);
+
   const utils = trpc.useUtils();
   const mutation = trpc.message.deleteMessage.useMutation({
     onSuccess: (data, variables, context) => {

@@ -1,4 +1,3 @@
-"use client";
 import { httpBatchLink, loggerLink } from "@trpc/client";
 import { createTRPCNext } from "@trpc/next";
 import { cookies } from "next/headers";

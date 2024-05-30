@@ -1,3 +1,4 @@
+"use client";
 import {
   Modal,
   ModalContent,
@@ -16,6 +17,7 @@ import { useForm, SubmitHandler, Controller } from "react-hook-form";
 import { useConfigStore } from "~/store/configStore";
 import { type IGlobalConfig } from "~/shared/type";
 import { ShortKeys } from "~/shared/constant";
+import { redirect, useParams, usePathname, useRouter } from "next/navigation";
 
 type SettingModal = {
   isOpen: boolean;
@@ -30,6 +32,10 @@ const SettingModal = ({
   onClose,
   onRefresh,
 }: SettingModal): JSX.Element => {
+  const { lang } = useParams();
+  const pathname = usePathname().replace(`/${lang as string}`, "");
+  const router = useRouter();
+
   const { config, setConfig } = useConfigStore((state) => state);
   const [isVisible, setIsVisible] = useState(false);
 
@@ -37,6 +43,15 @@ const SettingModal = ({
   const { register, getValues, control } = useForm<IGlobalConfig>({
     defaultValues: config,
   });
+
+  const onLangChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
+    const value = e.target.value;
+    localStorage.setItem("lang", value);
+
+    // void router.replace(`/${value}${pathname}`);
+    window.location.href = `/${value}${pathname}`;
+  };
+  console.log("langlanglang ", lang);
 
   const handleSubmit = () => {
     setConfig(getValues());
@@ -101,6 +116,17 @@ const SettingModal = ({
                         </Select>
                       )}
                     />
+                  </RowList>
+                  <RowList text="语言">
+                    <Select
+                      variant="bordered"
+                      aria-label="lang"
+                      onChange={onLangChange}
+                      selectedKeys={[lang as string]}
+                    >
+                      <SelectItem key="cn">中文</SelectItem>
+                      <SelectItem key="en">English</SelectItem>
+                    </Select>
                   </RowList>
                 </div>
               </ModalBody>

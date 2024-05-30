@@ -3,6 +3,7 @@ import Message from "./message";
 import dayjs from "dayjs";
 import { useMessageStore } from "~/store/messageStore";
 import { type EnhancedMessage } from "~/shared/type";
+import { useDictStore } from "~/store/dicStore";
 
 type MessageList = {
   data: EnhancedMessage[];
@@ -12,6 +13,7 @@ type MessageList = {
 const MessageList = ({ data = [], id }: MessageList) => {
   let curTime: Date | null = null;
   const storeMessageIds = useMessageStore((state) => state.storeMessageIds);
+  const { dict } = useDictStore();
 
   return (
     <div className="flex flex-col-reverse" key={id}>
@@ -25,7 +27,9 @@ const MessageList = ({ data = [], id }: MessageList) => {
               className="tody relative text-center text-muted-foreground"
               key={curTime}
             >
-              <span className=" relative z-10 bg-background px-1">今天</span>
+              <span className=" relative z-10 bg-background px-1">
+                {dict?.today}
+              </span>
             </div>,
           );
         } else if (dayjs(d.createdAt).isAfter(dayjs().startOf("day"))) {

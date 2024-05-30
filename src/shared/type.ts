@@ -1,7 +1,7 @@
 import { type Message } from "@prisma/client";
 import { InfiniteData } from "@tanstack/react-query";
 import { type RouterOutputs } from "~/trpc/shared";
-import { SHORTKEY, type MESSAGETYPE } from "./constant";
+import { type SHORTKEY, type MESSAGETYPE } from "./constant";
 
 export interface IGlobalConfig {
   password: string;

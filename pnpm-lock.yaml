@@ -11,6 +11,9 @@ dependencies:
   '@emotion/styled':
     specifier: ^11.11.0
     version: 11.11.0(@emotion/react@11.11.1)(@types/react@18.2.33)(react@18.2.0)
+  '@formatjs/intl-localematcher':
+    specifier: ^0.5.4
+    version: 0.5.4
   '@nextui-org/react':
     specifier: ^2.2.9
     version: 2.2.9(@types/react@18.2.33)(framer-motion@10.16.5)(react-dom@18.2.0)(react@18.2.0)(tailwind-variants@0.1.20)(tailwindcss@3.3.3)
@@ -47,6 +50,9 @@ dependencies:
   '@trpc/server':
     specifier: 11.0.0-next-beta.303
     version: 11.0.0-next-beta.303
+  '@types/negotiator':
+    specifier: ^0.6.3
+    version: 0.6.3
   '@vercel/analytics':
     specifier: ^1.2.2
     version: 1.2.2(next@14.1.4)(react@18.2.0)
@@ -74,6 +80,9 @@ dependencies:
   immer:
     specifier: ^10.0.3
     version: 10.0.3
+  negotiator:
+    specifier: ^0.6.3
+    version: 0.6.3
   next:
     specifier: ^14.1.4
     version: 14.1.4(@babel/core@7.23.9)(react-dom@18.2.0)(react@18.2.0)(sass@1.69.5)
@@ -4788,6 +4797,10 @@ packages:
     resolution: {integrity: sha512-K0VQKziLUWkVKiRVrx4a40iPaxTUefQmjtkQofBkYRcoaaL/8rhwDWww9qWbrgicNOgnpIsMxyNIUM4+n6dUIA==}
     dev: false
 
+  /@types/negotiator@0.6.3:
+    resolution: {integrity: sha512-JkXTOdKs5MF086b/pt8C3+yVp3iDUwG635L7oCH6HvJvvr6lSUU5oe/gLXnPEfYRROHjJIPgCV6cuAg8gGkntQ==}
+    dev: false
+
   /@types/node@18.16.0:
     resolution: {integrity: sha512-BsAaKhB+7X+H4GnSjGhJG9Qi8Tw+inU9nJDwmD5CgOmBLEI6ArdhikpLX7DjbjDRDTbqZzU2LSQNZg8WGPiSZQ==}
 
@@ -7481,6 +7494,11 @@ packages:
   /natural-compare@1.4.0:
     resolution: {integrity: sha512-OWND8ei3VtNC9h7V60qff3SVobHr996CTwgxubgyQYEpg290h9J0buyECNNJexkFm5sOajh5G116RYA1c8ZMSw==}
     dev: true
+
+  /negotiator@0.6.3:
+    resolution: {integrity: sha512-+EUsqGPLsM+j/zdChZjsnX51g4XrHFOIXwfnCVPGlQk/k5giakcKsuxCObBRu6DSm9opw/O6slWbJdghQM4bBg==}
+    engines: {node: '>= 0.6'}
+    dev: false
 
   /neo-async@2.6.2:
     resolution: {integrity: sha512-Yd3UES5mWCSqR+qNT93S3UoYUkqAZ9lLg8a7g9rimsWmYGK8cVToA4/sF3RrshdyV3sAGMXVUmpMYOw+dLpOuw==}
