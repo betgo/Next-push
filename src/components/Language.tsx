@@ -9,7 +9,6 @@ export const Language = () => {
   const router = useRouter();
   const pathname = usePathname();
   const { config } = useConfigStore();
-  console.log(111);
 
   useEffect(() => {
     const lang = localStorage.getItem("lang");

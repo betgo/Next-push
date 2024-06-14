@@ -1,5 +1,42 @@
 {
   "title": "Next-push",
   "description": "transform cross by any platform",
-  "today": "today"
+  "today": "Today",
+  "network": "Network connection is disconnected, please check your network",
+  "input": {
+    "placeholder": "Please input"
+  },
+  "theme": {
+    "dark": "Dark",
+    "light": "Light"
+  },
+  "chat": {
+    "uploadbtn": {
+      "text": "Upload",
+      "success": "Upload success",
+      "fail": "Upload fail",
+      "tooLarge": "File too large"
+    },
+    "refreshbtn": {
+      "text": "Refresh",
+      "success": "Refresh success"
+    },
+    "settingbtn": {
+      "text": "Setting"
+    }
+  },
+  "message": {
+    "copybtn": {
+      "text": "Copy",
+      "success": "Copy success",
+      "fail": "Copy fail"
+    },
+    "deletebtn": {
+      "text": "Delete",
+      "success": "Delete success"
+    },
+    "downloadbtn": {
+      "text": "Download"
+    }
+  }
 }

@@ -1,5 +1,42 @@
 {
   "title": "Next-push",
   "description": "多端互传",
-  "today": "今天"
+  "today": "今天",
+  "network": "网络连接断开，请检查你的网络",
+  "input": {
+    "placeholder": "请输入"
+  },
+  "theme": {
+    "dark": "深色模式",
+    "light": "亮色模式"
+  },
+  "chat": {
+    "uploadbtn": {
+      "text": "上传",
+      "success": "上传成功",
+      "fail": "上传失败",
+      "tooLarge": "文件太大"
+    },
+    "refreshbtn": {
+      "text": "刷新",
+      "success": "刷新成功"
+    },
+    "settingbtn": {
+      "text": "设置"
+    }
+  },
+  "message": {
+    "copybtn": {
+      "text": "复制",
+      "success": "复制成功",
+      "fail": "复制失败"
+    },
+    "deletebtn": {
+      "text": "删除",
+      "success": "删除成功"
+    },
+    "downloadbtn": {
+      "text": "下载"
+    }
+  }
 }

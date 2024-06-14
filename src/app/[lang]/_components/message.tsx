@@ -22,6 +22,7 @@ import { type EnhancedMessage } from "~/shared/type";
 import TextEnhance from "./textEnhance";
 import { useParams } from "next/navigation";
 import { Locale } from "~/dictionaries";
+import { useDictStore } from "~/store/dicStore";
 
 dayjs.locale("zh-cn");
 
@@ -34,10 +35,7 @@ const Message = ({
   onDelete?: (id: string) => void;
   isLocal: boolean; // 是否是本地消息
 }) => {
-  // const { lang } = useParams<{ lang: Locale }>();
-  // console.log("lang", lang);
-  console.log(111);
-
+  const { dict } = useDictStore();
   const utils = trpc.useUtils();
   const mutation = trpc.message.deleteMessage.useMutation({
     onSuccess: (data, variables, context) => {
@@ -58,7 +56,9 @@ const Message = ({
           }));
         });
       });
-      toast.success("删除成功！");
+      toast.success(
+        (dict?.message.deletebtn.success as string) || "Delete success.",
+      );
     },
   });
 
@@ -70,9 +70,11 @@ const Message = ({
       } else if (msg.type === "IMAGE") {
         await copyImage(msg.url ?? "");
       }
-      toast.success("Copy success.");
+      toast.success(
+        (dict?.message.copybtn.success as string) || "Copy success.",
+      );
     } catch (error) {
-      toast.error("Copy failed.");
+      toast.error((dict?.message.copybtn.fail as string) || "Copy failed.");
     }
   };
   const messageRender = () => {
@@ -118,7 +120,7 @@ const Message = ({
     if (msg.type === "FILE") {
       const link = document.createElement("a");
       link.href = msg.url!;
-      link.download = msg.fileName ?? "下载文件";
+      link.download = msg.fileName ?? "downFile";
       document.body.appendChild(link);
       link.click();
       document.body.removeChild(link);
@@ -151,14 +153,14 @@ const Message = ({
         <div className="group/item flex max-w-[90%] flex-col">
           <div className="mb-1 space-x-1 opacity-0 transition-all group-hover/item:opacity-100">
             <ChatBtn
-              text="复制"
+              text={dict?.message.copybtn.text || "Copy"}
               icon={<AiOutlineCopy />}
               onClick={() => {
                 void handleCopy();
               }}
             />
             <ChatBtn
-              text="删除"
+              text={dict?.message.deletebtn.text || "Delete"}
               icon={<AiOutlineDelete />}
               onClick={() => {
                 deleteMessage();
@@ -166,7 +168,7 @@ const Message = ({
             />
             {msg.type === "FILE" && (
               <ChatBtn
-                text="下载"
+                text={dict?.message.downloadbtn.text || "Download"}
                 icon={<AiOutlineDownload />}
                 onClick={() => {
                   onDownload();

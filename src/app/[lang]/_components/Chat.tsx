@@ -36,6 +36,7 @@ import {
 import { MESSAGETYPE, SHORTKEY } from "~/shared/constant";
 import clsx from "clsx";
 import { type Message } from "@prisma/client";
+import { useDictStore } from "~/store/dicStore";
 
 const uploadFile = async (file: File, oldId: string) => {
   const response = await fetch(
@@ -54,6 +55,7 @@ const uploadFile = async (file: File, oldId: string) => {
 };
 
 const Chat = () => {
+  const { dict } = useDictStore();
   const addMessage = useMessageStore((state) => state.addMessage);
   const configStore = useConfigStore.getState();
 
@@ -110,7 +112,9 @@ const Chat = () => {
         return oldData;
       });
       if (data) {
-        toast.success("上传成功");
+        toast.success(
+          (dict?.chat.uploadbtn.success as string) || "upload success",
+        );
       }
     },
     onError: (error) => {
@@ -150,7 +154,9 @@ const Chat = () => {
 
   const onUpload = (file: File) => {
     if (file.size > 5 * 1024 * 1024) {
-      toast.error("File too large.");
+      toast.error(
+        (dict?.chat.uploadbtn.tooLarge as string) || "File too large.",
+      );
       return;
     }
 
@@ -179,7 +185,9 @@ const Chat = () => {
     setRefrechLoaing(true);
     try {
       await utils.message.infiniteMessages.reset();
-      toast.success("刷新成功");
+      toast.success(
+        (dict?.chat.refreshbtn.success as string) || "refresh success",
+      );
       autoScroll.current = true;
     } catch (error) {
       console.log(error);
@@ -209,7 +217,7 @@ const Chat = () => {
     <div className="mt-2 flex   flex-col border-t pb-4 pl-2 pr-2 pt-2 ">
       <div className="mb-2 space-x-2">
         <ChatBtn
-          text="上传"
+          text={dict?.chat.uploadbtn.text || "upload"}
           icon={<AiOutlineCloudUpload />}
           onClick={() => {
             // 触发隐藏的文件输入元素的点击事件
@@ -217,21 +225,25 @@ const Chat = () => {
           }}
         />
         <ChatBtn
-          text={theme === "dark" ? "深色模式" : "亮色模式"}
+          text={
+            theme === "dark"
+              ? dict?.theme.dark || "dark"
+              : dict?.theme.light || "light"
+          }
           icon={theme === "dark" ? <CiDark /> : <CiLight />}
           onClick={() => {
             toggleColorMode();
           }}
         />
         <ChatBtn
-          text="设置"
+          text={dict?.chat.settingbtn.text || "setting"}
           icon={<AiOutlineSetting />}
           onClick={() => {
             onOpen();
           }}
         />
         <ChatBtn
-          text="刷新"
+          text={dict?.chat.refreshbtn.text || "refresh"}
           icon={
             <span className={clsx(refrechLoaing && "icon-spin")}>
               <LuRefreshCcw />
@@ -264,7 +276,7 @@ const Chat = () => {
         ref={textRef}
         value={textValue}
         onValueChange={setTextValue}
-        placeholder={"请输入"}
+        placeholder={dict?.input.placeholder || "Send a message..."}
         className="input:py-1  flex-1"
         classNames={{
           inputWrapper: "group-data-[focus=true]:border-[#e7f8ff]",
