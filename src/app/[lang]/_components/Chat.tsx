@@ -1,15 +1,5 @@
 "use client";
-import {
-  Button,
-  Input,
-  Modal,
-  ModalBody,
-  ModalContent,
-  ModalFooter,
-  ModalHeader,
-  Textarea,
-  useDisclosure,
-} from "@nextui-org/react";
+import { Textarea, useDisclosure } from "@nextui-org/react";
 import React, { useRef, useState } from "react";
 import {
   AiOutlineCloudUpload,
@@ -112,9 +102,7 @@ const Chat = () => {
         return oldData;
       });
       if (data) {
-        toast.success(
-          (dict?.chat.uploadbtn.success as string) || "upload success",
-        );
+        toast.success(dict?.chat.uploadbtn.success || "upload success");
       }
     },
     onError: (error) => {
@@ -154,9 +142,7 @@ const Chat = () => {
 
   const onUpload = (file: File) => {
     if (file.size > 5 * 1024 * 1024) {
-      toast.error(
-        (dict?.chat.uploadbtn.tooLarge as string) || "File too large.",
-      );
+      toast.error(dict?.chat.uploadbtn.tooLarge || "File too large.");
       return;
     }
 
@@ -185,9 +171,7 @@ const Chat = () => {
     setRefrechLoaing(true);
     try {
       await utils.message.infiniteMessages.reset();
-      toast.success(
-        (dict?.chat.refreshbtn.success as string) || "refresh success",
-      );
+      toast.success(dict?.chat.refreshbtn.success || "refresh success");
       autoScroll.current = true;
     } catch (error) {
       console.log(error);

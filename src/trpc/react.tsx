@@ -33,6 +33,11 @@ export function TRPCReactProvider(props: {
   cookies: string;
 }) {
   const configStore = useConfigStore.getState();
+  const iscn =
+    typeof window !== "undefined"
+      ? window.localStorage?.getItem("lang") === "cn"
+      : false;
+
   const [queryClient] = useState(
     () =>
       new QueryClient({
@@ -45,7 +50,11 @@ export function TRPCReactProvider(props: {
         queryCache: new QueryCache({
           onError: (error, query) => {
             if (error.message === UNAUTHORIZED) {
-              toast.error(ResponseCode[UNAUTHORIZED].message);
+              toast.error(
+                iscn
+                  ? ResponseCode.cn[UNAUTHORIZED].message
+                  : ResponseCode[UNAUTHORIZED].message,
+              );
               configStore.setIsAuth(false);
             } else {
               toast.error(error.message);
@@ -58,7 +67,11 @@ export function TRPCReactProvider(props: {
         mutationCache: new MutationCache({
           onError: (error, query) => {
             if (error.message === UNAUTHORIZED) {
-              toast.error(ResponseCode[UNAUTHORIZED].message);
+              toast.error(
+                iscn
+                  ? ResponseCode.cn[UNAUTHORIZED].message
+                  : ResponseCode[UNAUTHORIZED].message,
+              );
               configStore.setIsAuth(false);
             } else {
               toast.error(error.message);

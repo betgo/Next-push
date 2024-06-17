@@ -6,7 +6,6 @@ import { TRPCReactProvider } from "~/trpc/react";
 import { Providers } from "./providers";
 import { Analytics } from "@vercel/analytics/react";
 import Footer from "./[lang]/_components/Footer";
-import { useConfigStore } from "~/store/configStore";
 
 const APP_NAME = "Next-push App";
 const APP_DEFAULT_TITLE = "Next-push";
@@ -52,9 +51,6 @@ export default function RootLayout({
 }: {
   children: React.ReactNode;
 }) {
-  const { config } = useConfigStore.getState();
-  console.log("config", config);
-
   return (
     <html suppressHydrationWarning>
       <body

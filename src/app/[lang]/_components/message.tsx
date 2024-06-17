@@ -20,8 +20,6 @@ import { produce } from "immer";
 import { trpc } from "~/trpc/react";
 import { type EnhancedMessage } from "~/shared/type";
 import TextEnhance from "./textEnhance";
-import { useParams } from "next/navigation";
-import { Locale } from "~/dictionaries";
 import { useDictStore } from "~/store/dicStore";
 
 dayjs.locale("zh-cn");
@@ -56,9 +54,7 @@ const Message = ({
           }));
         });
       });
-      toast.success(
-        (dict?.message.deletebtn.success as string) || "Delete success.",
-      );
+      toast.success(dict?.message.deletebtn.success || "Delete success.");
     },
   });
 
@@ -70,11 +66,9 @@ const Message = ({
       } else if (msg.type === "IMAGE") {
         await copyImage(msg.url ?? "");
       }
-      toast.success(
-        (dict?.message.copybtn.success as string) || "Copy success.",
-      );
+      toast.success(dict?.message.copybtn.success || "Copy success.");
     } catch (error) {
-      toast.error((dict?.message.copybtn.fail as string) || "Copy failed.");
+      toast.error(dict?.message.copybtn.fail || "Copy failed.");
     }
   };
   const messageRender = () => {

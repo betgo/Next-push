@@ -6,9 +6,26 @@
   "input": {
     "placeholder": "Please input"
   },
+  "button": {
+    "ok": "OK",
+    "cancel": "Cancel"
+  },
   "theme": {
     "dark": "Dark",
     "light": "Light"
+  },
+  "setting": {
+    "text": "Setting",
+    "password": {
+      "text": "Access Password",
+      "placeholder": "Please input password"
+    },
+    "sendShortKey": {
+      "text": "SendShortKey"
+    },
+    "language": {
+      "text": "Language"
+    }
   },
   "chat": {
     "uploadbtn": {

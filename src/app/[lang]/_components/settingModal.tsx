@@ -18,6 +18,7 @@ import { useConfigStore } from "~/store/configStore";
 import { type IGlobalConfig } from "~/shared/type";
 import { ShortKeys } from "~/shared/constant";
 import { redirect, useParams, usePathname, useRouter } from "next/navigation";
+import { useDictStore } from "~/store/dicStore";
 
 type SettingModal = {
   isOpen: boolean;
@@ -34,7 +35,7 @@ const SettingModal = ({
 }: SettingModal): JSX.Element => {
   const { lang } = useParams();
   const pathname = usePathname().replace(`/${lang as string}`, "");
-  const router = useRouter();
+  const { dict } = useDictStore();
 
   const { config, setConfig } = useConfigStore((state) => state);
   const [isVisible, setIsVisible] = useState(false);
@@ -51,7 +52,7 @@ const SettingModal = ({
     // void router.replace(`/${value}${pathname}`);
     window.location.href = `/${value}${pathname}`;
   };
-  console.log("langlanglang ", lang);
+  console.log("[lang]: ", lang);
 
   const handleSubmit = () => {
     setConfig(getValues());
@@ -65,10 +66,12 @@ const SettingModal = ({
         <ModalContent>
           {(onClose) => (
             <>
-              <ModalHeader className="flex flex-col gap-1">设置</ModalHeader>
+              <ModalHeader className="flex flex-col gap-1">
+                {dict?.setting.text}
+              </ModalHeader>
               <ModalBody>
                 <div className="rounded-xl border border-border shadow">
-                  <RowList text="密码">
+                  <RowList text={dict?.setting.password.text || "password"}>
                     <Controller
                       control={control}
                       name="password"
@@ -76,7 +79,9 @@ const SettingModal = ({
                         <Input
                           variant="bordered"
                           labelPlacement="outside-left"
-                          placeholder="请输入访问密码"
+                          placeholder={
+                            dict?.setting.password.placeholder || "password"
+                          }
                           endContent={
                             <button
                               className="focus:outline-none"
@@ -99,7 +104,9 @@ const SettingModal = ({
                       )}
                     />
                   </RowList>
-                  <RowList text="发送键">
+                  <RowList
+                    text={dict?.setting.sendShortKey.text || "sendShortKey"}
+                  >
                     <Controller
                       control={control}
                       name="sendShortKey"
@@ -117,7 +124,7 @@ const SettingModal = ({
                       )}
                     />
                   </RowList>
-                  <RowList text="语言">
+                  <RowList text={dict?.setting.language.text || "language"}>
                     <Select
                       variant="bordered"
                       aria-label="lang"
@@ -132,10 +139,10 @@ const SettingModal = ({
               </ModalBody>
               <ModalFooter>
                 <Button variant="flat" onPress={onClose}>
-                  取消
+                  {dict?.button.cancel}
                 </Button>
                 <Button color="primary" onPress={handleSubmit}>
-                  确定
+                  {dict?.button.ok}
                 </Button>
               </ModalFooter>
             </>

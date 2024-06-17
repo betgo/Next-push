@@ -6,9 +6,26 @@
   "input": {
     "placeholder": "请输入"
   },
+  "button": {
+    "ok": "确认",
+    "cancel": "取消"
+  },
   "theme": {
     "dark": "深色模式",
     "light": "亮色模式"
+  },
+  "setting": {
+    "text": "设置",
+    "password": {
+      "text": "访问密码",
+      "placeholder": "请输入访问密码"
+    },
+    "sendShortKey": {
+      "text": "发送键"
+    },
+    "language": {
+      "text": "语言"
+    }
   },
   "chat": {
     "uploadbtn": {
