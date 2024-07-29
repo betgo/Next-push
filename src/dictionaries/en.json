@@ -53,7 +53,8 @@
       "success": "Delete success"
     },
     "downloadbtn": {
-      "text": "Download"
+      "text": "Download",
+      "fail": "Download fail"
     }
   }
 }

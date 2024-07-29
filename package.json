@@ -78,5 +78,8 @@
   },
   "ct3aMetadata": {
     "initVersion": "7.23.2"
+  },
+  "volta": {
+    "node": "20.16.0"
   }
 }

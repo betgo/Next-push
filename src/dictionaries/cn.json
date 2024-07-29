@@ -53,7 +53,8 @@
       "success": "删除成功"
     },
     "downloadbtn": {
-      "text": "下载"
+      "text": "下载",
+      "fail": "下载失败"
     }
   }
 }

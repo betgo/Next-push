@@ -27,6 +27,7 @@ import { MESSAGETYPE, SHORTKEY } from "~/shared/constant";
 import clsx from "clsx";
 import { type Message } from "@prisma/client";
 import { useDictStore } from "~/store/dicStore";
+import { env } from "~/env.mjs";
 
 const uploadFile = async (file: File, oldId: string) => {
   const response = await fetch(
@@ -82,6 +83,8 @@ const Chat = () => {
           fileSize: file.size + "",
         });
       }
+      console.log("newMsg", newMsg);
+      
       void utils.message.infiniteMessages.setInfiniteData({}, (oldData) => {
         const newData = Insert_InfiniteData(oldData, newMsg.message);
         return newData;
@@ -107,6 +110,8 @@ const Chat = () => {
     },
     onError: (error) => {
       // Handle the error here
+      toast(dict?.chat.uploadbtn.fail || "upload fail");
+      console.log(error);
     },
   });
 
@@ -141,7 +146,7 @@ const Chat = () => {
   };
 
   const onUpload = (file: File) => {
-    if (file.size > 5 * 1024 * 1024) {
+    if (file.size > env.NEXT_PUBLIC_BLOB_MAX_UPLOAD_SIZE_MB * 1024 * 1024) {
       toast.error(dict?.chat.uploadbtn.tooLarge || "File too large.");
       return;
     }

@@ -18,6 +18,7 @@ export const env = createEnv({
       .enum(["development", "test", "production"])
       .default("development"),
     CODE: z.string().default(""),
+
     // NEXTAUTH_SECRET:
     //   process.env.NODE_ENV === "production"
     //     ? z.string()
@@ -41,6 +42,7 @@ export const env = createEnv({
    */
   client: {
     // NEXT_PUBLIC_CLIENTVAR: z.string(),
+    NEXT_PUBLIC_BLOB_MAX_UPLOAD_SIZE_MB: z.coerce.number().default(10),
   },
 
   /**
@@ -51,6 +53,7 @@ export const env = createEnv({
     DATABASE_URL: process.env.DATABASE_URL,
     NODE_ENV: process.env.NODE_ENV,
     CODE: process.env.CODE,
+    NEXT_PUBLIC_BLOB_MAX_UPLOAD_SIZE_MB: process.env.BLOB_MAX_UPLOAD_SIZE_MB,
     // NEXTAUTH_SECRET: process.env.NEXTAUTH_SECRET,
     // NEXTAUTH_URL: process.env.NEXTAUTH_URL,
     // DISCORD_CLIENT_ID: process.env.DISCORD_CLIENT_ID,
