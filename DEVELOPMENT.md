@@ -1,17 +1,16 @@
-# 本地运行
+# Local Run
 
+## Install `POSTGRES`
 
-## 安装 `POSTGRES`
-
-复制一份 `.env.example` 并将其重命名为 `.env`
+Make a copy of `.env.example` and rename it to `.env`
 
 ```env
-# 数据库地址
+# Database URL
 DATABASE_URL="postgresql://user:password@localhost:5432/nextpush"
 
 
 
-# Access passsword
+# Access password
 CODE=""
 
 # Postgres
@@ -19,7 +18,7 @@ POSTGRES_USER=user
 POSTGRES_PASSWORD=password
 POSTGRES_DB=nextpush
 
-# 文件上传token
+# File upload token
 BLOB_READ_WRITE_TOKEN=""
 ```
 
@@ -30,16 +29,16 @@ pnpm i
 pnpm run  dev
 ```
 
-用浏览器打开 http://localhost:3000
+Open in browser <http://localhost:3000>
 
+### Docker Deployment
 
-### Docker部署
-本项目包含了 `Dockerfile` 和 `docker-compose.yml` 文件。
-`Dockfile` 用于构建 `nextpush` 服务image，`docker-compose.yml` 用于启动 `nextpush` 和一个 `PostgresSQl`。
+This project includes `Dockerfile` and `docker-compose.yml` files. The `Dockerfile` is used to build the nextpush service image, and `docker-compose.yml` is used to start the `nextpush` and a `PostgresSQL` instance.
 
-快速启动项目，执行以下命令：
+To quickly start the project, execute the following command:
+
 ```sh
 docker compose up
 ```
 
-用浏览器打开 http://localhost:3000 。
+Open in browser <http://localhost:3000>

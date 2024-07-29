@@ -20,7 +20,7 @@ const config = {
     remotePatterns: [
       {
         protocol: "https",
-        hostname: "0mfqca1eq1iocvic.public.blob.vercel-storage.com",
+        hostname: "*.public.blob.vercel-storage.com",
         port: "",
         // pathname: "/account123/**",
       },
