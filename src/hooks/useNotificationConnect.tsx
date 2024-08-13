@@ -13,7 +13,6 @@ export const useNotificationConnect = (
   );
   useEffect(() => {
     const newData = data?.pages[0]?.items[0];
-
     if (
       newData &&
       prevData &&
@@ -25,7 +24,7 @@ export const useNotificationConnect = (
 
       setPrevData(newData);
       void notifier.notify(newData.message || "message");
-    } else if (prevData === null) {
+    } else if (prevData === undefined) {
       setPrevData(newData);
     }
   }, [data, excludes, prevData]);
