@@ -5,6 +5,7 @@ import {
   AiOutlineCloudUpload,
   AiOutlineSend,
   AiOutlineSetting,
+  AiOutlineBell,
 } from "react-icons/ai";
 import { LuRefreshCcw } from "react-icons/lu";
 
@@ -28,6 +29,8 @@ import clsx from "clsx";
 import { type Message } from "@prisma/client";
 import { useDictStore } from "~/store/dicStore";
 import { env } from "~/env.mjs";
+import notifier from "~/shared/Notifier";
+import { useNotificationPermissionListener } from "~/hooks/useNotificationPermissionListener";
 
 const uploadFile = async (file: File, oldId: string) => {
   const response = await fetch(
@@ -56,7 +59,9 @@ const Chat = () => {
   const fileInputRef = useRef<HTMLInputElement | null>(null);
   const textSubmit = trpc.message.sendMessage.useMutation();
   const { isOpen, onOpen, onOpenChange } = useDisclosure();
-
+  const showNotificationPermissionRequired = useNotificationPermissionListener(
+    () => notifier.notRequested(),
+  );
   const [refrechLoaing, setRefrechLoaing] = useState(false);
 
   const { scrollRef, autoScroll } = useScrollToBottom("scroll");
@@ -84,7 +89,7 @@ const Chat = () => {
         });
       }
       console.log("newMsg", newMsg);
-      
+
       void utils.message.infiniteMessages.setInfiniteData({}, (oldData) => {
         const newData = Insert_InfiniteData(oldData, newMsg.message);
         return newData;
@@ -201,6 +206,10 @@ const Chat = () => {
       }
     }
   };
+  // 获取通知权限
+  const requestPermission = async () => {
+    await notifier.maybeRequestPermission();
+  };
 
   return (
     <div className="mt-2 flex   flex-col border-t pb-4 pl-2 pr-2 pt-2 ">
@@ -242,6 +251,16 @@ const Chat = () => {
             void onRefresh();
           }}
         />
+        {showNotificationPermissionRequired && (
+          <ChatBtn
+            text={dict?.chat.notify.text || "notify"}
+            icon={<AiOutlineBell />}
+            title={dict?.chat.notify.tooltip}
+            onClick={() => {
+              void requestPermission();
+            }}
+          />
+        )}
       </div>
       <input
         type="file"

@@ -38,6 +38,10 @@
       "text": "Refresh",
       "success": "Refresh success"
     },
+    "notify": {
+      "text": "notify",
+      "tooltip": "Click to get notification permissions"
+    },
     "settingbtn": {
       "text": "Setting"
     }

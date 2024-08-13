@@ -1,5 +1,5 @@
 "use client";
-import React from "react";
+import React, { useEffect } from "react";
 import ScrollAnchoringComponent from "../_components/ScrollAnchoringComponent";
 import clsx from "clsx";
 import { trpc } from "~/trpc/react";
@@ -9,10 +9,15 @@ import { type Dictionary } from "~/dictionaries";
 import NetworkDetector from "../_components/network";
 import Chat from "../_components/Chat";
 import { useDictStore } from "~/store/dicStore";
+import { useNotificationConnect } from "~/hooks/useNotificationConnect";
+import { useMessageStore } from "~/store/messageStore";
 
 const Content = ({ dict }: { dict: Dictionary }) => {
   const configStore = useConfigStore.getState();
-  useDictStore.getState().update(dict);
+  const storeMessageIds = useMessageStore((state) => state.storeMessageIds);
+  useEffect(() => {
+    useDictStore.getState().update(dict);
+  }, []);
 
   const messages = trpc.message.infiniteMessages.useInfiniteQuery(
     {},
@@ -31,12 +36,14 @@ const Content = ({ dict }: { dict: Dictionary }) => {
       maxPages: 20,
     },
   );
+  useNotificationConnect(messages.data, storeMessageIds);
 
   const handleScroll = (scrollTop: number) => {
     if (scrollTop < 200 && !messages.isFetching && messages.hasNextPage) {
       void messages.fetchNextPage();
     }
   };
+  
   return (
     <>
       <NetworkDetector />

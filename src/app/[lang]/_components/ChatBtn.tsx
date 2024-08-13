@@ -1,8 +1,9 @@
-import React, { useRef, useState } from "react";
+import React, { memo, useRef, useState } from "react";
 
 const ChatBtn = (props: {
   text: string;
   icon: JSX.Element;
+  title?: string;
   onClick: () => void;
 }) => {
   const iconRef = useRef<HTMLDivElement>(null);
@@ -26,7 +27,7 @@ const ChatBtn = (props: {
   return (
     <div
       className={
-        "g-border animate-slide-in group box-content inline-flex h-4 w-[--icon-width] items-center overflow-hidden rounded-xl  px-2 py-1  transition-width hover:w-[--full-width] hover:delay-500 "
+        "g-border group box-content inline-flex h-4 w-[--icon-width] animate-slide-in items-center overflow-hidden rounded-xl  px-2 py-1  transition-width hover:w-[--full-width] hover:delay-500 "
       }
       onClick={() => {
         props.onClick();
@@ -34,6 +35,7 @@ const ChatBtn = (props: {
       }}
       onMouseEnter={updateWidth}
       onTouchStart={updateWidth}
+      title={props.title}
       style={
         {
           "--icon-width": `${width.icon}px`,
@@ -54,4 +56,4 @@ const ChatBtn = (props: {
   );
 };
 
-export default ChatBtn;
+export default memo(ChatBtn);

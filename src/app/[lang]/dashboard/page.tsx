@@ -1,8 +1,6 @@
 // "use client";
-import React, { useEffect } from "react";
+import React from "react";
 
-import Chat from "../_components/Chat";
-import NetworkDetector from "../_components/network";
 import { useConfigStore } from "~/store/configStore";
 import { getDictionary, type Locale } from "~/dictionaries";
 import Content from "./content";

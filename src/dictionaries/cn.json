@@ -40,6 +40,10 @@
     },
     "settingbtn": {
       "text": "设置"
+    },
+    "notify": {
+      "text": "通知",
+      "tooltip": "点击获取通知权限"
     }
   },
   "message": {
